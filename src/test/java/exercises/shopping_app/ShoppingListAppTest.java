@@ -6,6 +6,7 @@ import edu.touro.mcon264.apps.collections.ListInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,9 @@ public class ShoppingListAppTest {
     // Small helper to extract list contents as strings for easier assertions
     private List<String> toStringList(ListInterface<ShoppingItem> list) {
         List<String> result = new ArrayList<>();
-        for (ShoppingItem item : list) {
+        Iterator<ShoppingItem> iterator = list.iterator();
+        while(iterator.hasNext()) {
+            ShoppingItem item = iterator.next();
             // encode as "aisle:name" for easier comparison
             result.add(item.getAisle() + ":" + item.getName());
         }
